@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Matt - Project</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<style type="text/css">
+	.show{
+		display: block;
+	}
+	.no_show{
+		display: none;
+	}
+	.active{
+		background: #cea5ce;
+	}
+	.button-div{
+		border: 1px solid black;
+		padding: 7px;
+		margin: 5px 10px;
+		width: 400px;
+	}
+</style>
+</head>
+<body>
+	<div class="button-div">
+		<button id="tools" class="tools">tools</button>
+		<button id="guidance" class="guidance">guidance</button>
+		<button id="tools_guidance" class="tools guidance">tools - guidance</button>
+	</div>
+	<div class="button-div">
+		<button id="publishers" class="publishers">publishers</button>
+		<button id="users" class="users">users</button>
+		<button id="publishers_users" class="publishers users">publishers - users</button>
+	</div>
+	<div class="button-div">
+		<button id="technical" class="technical">technical</button>
+		<button id="non-technical" class="non-technical">non technical</button>
+		<button id="technical_non-technical" class="technical non-technical">technical - non technical</button>
+	</div>
+
+	<div class="filterDiv show tools"><p>1. tools</p></div>
+	<div class="filterDiv show guidance"><p>2. guidance</p></div>
+	<div class="filterDiv show publishers"><p>3. publishers</p></div>
+	<div class="filterDiv show users"><p>4. users</p></div>
+	<div class="filterDiv show technical"><p>5. technical</p></div>
+	<div class="filterDiv show non-technical"><p>6. non-technical</p></div>
+
+	<div class="filterDiv show tools publishers"><p>7. tools publishers</p></div>
+	<div class="filterDiv show tools users"><p>8. tools users</p></div>
+	<div class="filterDiv show tools technical"><p>9. tools technical</p></div>
+	<div class="filterDiv show tools non-technical"><p>10. tools non-technical</p></div>
+	<div class="filterDiv show guidance publishers"><p>11. guidance publishers</p></div>
+	<div class="filterDiv show guidance users"><p>12. guidance users</p></div>
+	<div class="filterDiv show guidance technical"><p>13. guidance technical</p></div>
+	<div class="filterDiv show guidance non-technical"><p>14. guidance non-technical</p></div>
+
+
+	<div class="filterDiv show tools publishers technical"><p>15. tools publishers technical</p></div>
+	<div class="filterDiv show tools publishers non-technical"><p>16. tools publishers non-technical</p></div>
+	<div class="filterDiv show guidance publishers technical"><p>17. guidance publishers technical</p></div>
+	<div class="filterDiv show guidance publishers non-technical"><p>18. guidance publishers non-technical</p></div>
+
+	<div class="filterDiv show tools guidance"><p>19. tools guidance</p></div>
+
+	<div class="filterDiv show tools guidance publishers"><p>20. tools guidance publishers</p></div>
+
+	<div class="filterDiv show tools guidance publishers technical"><p>21. tools guidance publishers technical </p></div>
+
+
+
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript">
+		var  tools_active = publishers_active = technical_active = guidance_active = users_active = nontechnical_active = tools_guidance_active = publishers_users_active = technical_nontechnical_active = false;
+		var no_of_classes_selected_3 = no_of_classes_selected_2 = no_of_classes_selected_1 = 0;
+		var current_filter_array_3 = current_filter_array_2 = current_filter_array_1 = [];
+
+		document.getElementById('tools').onclick = function(){
+			guidance_active = tools_guidance_active = false;
+			document.getElementById("guidance").classList.remove("active");  
+			document.getElementById("tools_guidance").classList.remove("active");  
+
+			if(!tools_active) {
+				tools_active = true;
+				document.getElementById("tools").classList.add("active"); 
+			}
+			else{
+				tools_active = false;
+				document.getElementById("tools").classList.remove("active"); 
+			}; 
+			alertx("tools");
+		}
+		document.getElementById('guidance').onclick = function(){
+			tools_active =  tools_guidance_active = false;
+			document.getElementById("tools").classList.remove("active");  
+			document.getElementById("tools_guidance").classList.remove("active"); 
+			if(!guidance_active) {
+				guidance_active = true;
+				document.getElementById("guidance").classList.add("active");  
+			}
+			else{
+				guidance_active = false;
+				document.getElementById("guidance").classList.remove("active");  
+
+			}; 
+			alertx("guidance");
+		}
+		document.getElementById('tools_guidance').onclick =function(){
+			tools_active = guidance_active = false;
+			document.getElementById("guidance").classList.remove("active");  
+			document.getElementById("tools").classList.remove("active"); 
+			if(!tools_guidance_active) {
+				tools_guidance_active = true; 
+				document.getElementById("tools_guidance").classList.add("active");  
+
+			}
+			else{
+				tools_guidance_active = false;
+				document.getElementById("tools_guidance").classList.remove("active");  
+
+			}; 
+			alertx("tools_guidance");
+		}
+
+		document.getElementById('publishers').onclick = function(){
+			document.getElementById("users").classList.remove("active");  
+			document.getElementById("publishers_users").classList.remove("active"); 
+			users_active = publishers_users_active = false;
+			if(!publishers_active) {
+				publishers_active = true; 
+				document.getElementById("publishers").classList.add("active");
+			}
+			else{
+				publishers_active = false;
+				document.getElementById("publishers").classList.remove("active");
+
+			}; 
+			alertx("publishers");
+		}
+		document.getElementById('users').onclick = function(){
+			document.getElementById("publishers").classList.remove("active");  
+			document.getElementById("publishers_users").classList.remove("active"); 
+			publishers_active =  publishers_users_active = false;
+			if(!users_active) {
+				users_active = true;
+				document.getElementById("users").classList.add("active");
+
+			}
+			else{
+				users_active = false;
+				document.getElementById("users").classList.remove("active");
+
+			}; 
+			alertx("users");
+		}
+		document.getElementById('publishers_users').onclick = function(){
+			document.getElementById("publishers").classList.remove("active");  
+			document.getElementById("users").classList.remove("active"); 
+			publishers_active = users_active =  false;
+			if(!publishers_users_active) {
+				publishers_users_active = true;
+				document.getElementById("publishers_users").classList.add("active");
+
+			}
+			else{
+				publishers_users_active = false;
+				document.getElementById("publishers_users").classList.remove("active");
+
+			}; 
+			alertx("publishers_users");
+		}
+
+		document.getElementById('non-technical').onclick = function(){
+			document.getElementById("technical").classList.remove("active");  
+			document.getElementById("technical_non-technical").classList.remove("active"); 
+			technical_active = technical_nontechnical_active = false;
+			if(!nontechnical_active) {
+				nontechnical_active = true; 
+				document.getElementById("non-technical").classList.add("active");
+			}
+			else{
+				nontechnical_active = false;
+				document.getElementById("non-technical").classList.remove("active");
+			}; 
+			alertx("non-technical");
+		}
+		document.getElementById('technical').onclick =function(){
+			document.getElementById("non-technical").classList.remove("active");  
+			document.getElementById("technical_non-technical").classList.remove("active"); 
+			nontechnical_active = technical_nontechnical_active = false;
+			if(!technical_active) {
+				technical_active = true; 
+				document.getElementById("technical").classList.add("active");
+
+			}
+			else{
+				technical_active = false;
+				document.getElementById("technical").classList.remove("active");
+			}; 
+			alertx("technical");
+		}
+		document.getElementById('technical_non-technical').onclick = function(){
+			document.getElementById("technical").classList.remove("active");  
+			document.getElementById("non-technical").classList.remove("active"); 
+			nontechnical_active = technical_active = false;
+			if(!technical_nontechnical_active) {
+				technical_nontechnical_active = true ;
+				document.getElementById("technical_non-technical").classList.add("active");
+
+			}
+			else{
+				technical_nontechnical_active = false;
+				document.getElementById("technical_non-technical").classList.remove("active");
+			}; 
+			alertx("technical_non-technical");
+		}
+
+		function alertx(id){
+			var current_filter_array = ["filterDiv", "show"];
+			var filter_array_1 = ["tools","guidance"];
+			var filter_array_2 = ["publishers","users"];
+			var filter_array_3 = ["technical", "non-technical"];
+			var id_split =  id.split("_");
+			if (id_split[0] == "tools" || id_split[0] == "guidance"){
+				current_filter_array_1 = [];
+				no_of_classes_selected_1 = 0;
+				if(tools_guidance_active || tools_active || guidance_active ){
+					current_filter_array_1.push(id_split[0], id_split[1]);
+					no_of_classes_selected_1 = 1 ;
+				}
+			}
+
+			else if (id_split[0] == "publishers" || id_split[0] == "users"){
+				current_filter_array_2 =[];
+				no_of_classes_selected_2 = 0;
+				if(publishers_users_active || users_active || publishers_active){
+					current_filter_array_2.push(id_split[0], id_split[1]);
+					no_of_classes_selected_2 = 1;
+				}
+			}
+
+			else if (id_split[0] == "technical" || id_split[0] == "non-technical"){
+				current_filter_array_3 = [];
+				no_of_classes_selected_3 =0;
+				if(technical_nontechnical_active || technical_active || nontechnical_active){
+					current_filter_array_3.push(id_split[0], id_split[1]);
+					no_of_classes_selected_3 = 1;
+				}
+				else{
+
+				}
+			}
+
+			var x = document.getElementsByClassName("filterDiv");
+
+			current_filter_array_1 = current_filter_array_1.filter(item => item !== undefined);
+			current_filter_array_2 = current_filter_array_2.filter(item => item !== undefined);
+			current_filter_array_3= current_filter_array_3.filter(item => item !== undefined);
+
+			var no_of_classes_selected = no_of_classes_selected_1 + no_of_classes_selected_2 + no_of_classes_selected_3;
+
+			for (var i = 0; i < x.length; i++) {
+				x_array = x[i].classList["value"].split(" ");
+
+				if(x_array.indexOf("no_show") !== -1) x_array.splice(x_array.indexOf("no_show"),1);
+				if(x_array.indexOf("show") !== -1) x_array.splice(x_array.indexOf("show"),1);
+				if(x_array.indexOf("filterDiv") !== -1) x_array.splice(x_array.indexOf("filterDiv"),1);
+
+				if((current_filter_array_1.length == 0 || x_array.some(r=> current_filter_array_1.indexOf(r) >= 0)) && (current_filter_array_2.length == 0 || x_array.some(r=> current_filter_array_2.indexOf(r) >= 0)) && (current_filter_array_3.length == 0 || x_array.some(r=> current_filter_array_3.indexOf(r) >= 0)) ){
+					x[i].classList.remove("no_show");
+					x[i].classList.add("show");
+				}
+				else{
+					x[i].classList.remove("show");
+					x[i].classList.add("no_show");
+				}
+			}
+
+		}
+</script>
+</body>
+</html>
