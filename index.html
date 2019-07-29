@@ -1,220 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Matt - Project</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="index.css">
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
 	<style type="text/css">
+	body{
+		padding: 10px;
+	}
 	.show{
 		display: block;
 	}
 	.no_show{
 		display: none;
 	}
-	.active{
-		background: #cea5ce;
+	#filter_options_1, #filter_options_2, #filter_options_3{
+		margin: 10px 3px;
 	}
-	.button-div{
-		border: 1px solid black;
-		padding: 7px;
-		margin: 5px 10px;
-		width: 400px;
+	.filterDiv{
+		max-width:  400px;
+		width: 100%;
+		padding: 0px 3px;
+		border: 2px solid #eee;
+		margin-bottom: 5px;
+		border-radius: 5px;
+		background: #f7f7f7;
 	}
 </style>
 </head>
 <body>
-	<div class="button-div">
-		<button id="tools" class="tools">tools</button>
-		<button id="guidance" class="guidance">guidance</button>
-		<button id="tools_guidance" class="tools guidance">tools - guidance</button>
-	</div>
-	<div class="button-div">
-		<button id="publishers" class="publishers">publishers</button>
-		<button id="users" class="users">users</button>
-		<button id="publishers_users" class="publishers users">publishers - users</button>
-	</div>
-	<div class="button-div">
-		<button id="technical" class="technical">technical</button>
-		<button id="non-technical" class="non-technical">non technical</button>
-		<button id="technical_non-technical" class="technical non-technical">technical - non technical</button>
+	<div class="btn-group btn-group-toggle" data-toggle="buttons" id="filter_options_1">
+		<label class="btn btn-secondary">
+			<input type="radio" name="filter_options_1" value="tools" autocomplete="off" > tools
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="filter_options_1" value="guidance" autocomplete="off"> guidance
+		</label>
+		<label class="btn btn-secondary active">
+			<input type="radio" name="filter_options_1" value="tools_guidance" autocomplete="off" checked> tools - guidance
+		</label>
 	</div>
 
-	<div class="filterDiv show tools"><p>1. tools</p></div>
-	<div class="filterDiv show guidance"><p>2. guidance</p></div>
-	<div class="filterDiv show publishers"><p>3. publishers</p></div>
-	<div class="filterDiv show users"><p>4. users</p></div>
-	<div class="filterDiv show technical"><p>5. technical</p></div>
-	<div class="filterDiv show non-technical"><p>6. non-technical</p></div>
+	<div class="btn-group btn-group-toggle" data-toggle="buttons" id="filter_options_2">
+		<label class="btn btn-secondary">
+			<input type="radio" name="filter_options_2" value="publishers" autocomplete="off" > publishers
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="filter_options_2" value="users" autocomplete="off"> users
+		</label>
+		<label class="btn btn-secondary active">
+			<input type="radio" name="filter_options_2" value="publishers_users" autocomplete="off" checked> publishers - users
+		</label>
+	</div>
 
-	<div class="filterDiv show tools publishers"><p>7. tools publishers</p></div>
-	<div class="filterDiv show tools users"><p>8. tools users</p></div>
-	<div class="filterDiv show tools technical"><p>9. tools technical</p></div>
-	<div class="filterDiv show tools non-technical"><p>10. tools non-technical</p></div>
-	<div class="filterDiv show guidance publishers"><p>11. guidance publishers</p></div>
-	<div class="filterDiv show guidance users"><p>12. guidance users</p></div>
-	<div class="filterDiv show guidance technical"><p>13. guidance technical</p></div>
-	<div class="filterDiv show guidance non-technical"><p>14. guidance non-technical</p></div>
+	<div class="btn-group btn-group-toggle" data-toggle="buttons" id= "filter_options_3">
+		<label class="btn btn-secondary">
+			<input type="radio" name="filter_options_3" value="technical" autocomplete="off" > technical
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="filter_options_3" value="non-technical" autocomplete="off"> non technical
+		</label>
+		<label class="btn btn-secondary active">
+			<input type="radio" name="filter_options_3" value="technical_non-technical" autocomplete="off" checked> technical - non technical
+		</label>
+	</div>
+
+	<div class="filterDiv no_show tools"><p>1. tools</p></div>
+	<div class="filterDiv no_show guidance"><p>2. guidance</p></div>
+	<div class="filterDiv no_show publishers"><p>3. publishers</p></div>
+	<div class="filterDiv no_show users"><p>4. users</p></div>
+	<div class="filterDiv no_show tools technical"><p>5. technical</p></div>
+	<div class="filterDiv no_show non-technical"><p>6. non-technical</p></div>
+
+	<div class="filterDiv no_show tools publishers"><p>7. tools publishers</p></div>
+	<div class="filterDiv no_show tools users"><p>8. tools users</p></div>
+	<div class="filterDiv no_show tools technical"><p>9. tools technical</p></div>
+	<div class="filterDiv no_show tools non-technical"><p>10. tools non-technical</p></div>
+	<div class="filterDiv no_show guidance publishers"><p>11. guidance publishers</p></div>
+	<div class="filterDiv no_show guidance users"><p>12. guidance users</p></div>
+	<div class="filterDiv no_show guidance technical"><p>13. guidance technical</p></div>
+	<div class="filterDiv no_show guidance non-technical"><p>14. guidance non-technical</p></div>
 
 
-	<div class="filterDiv show tools publishers technical"><p>15. tools publishers technical</p></div>
-	<div class="filterDiv show tools publishers non-technical"><p>16. tools publishers non-technical</p></div>
-	<div class="filterDiv show guidance publishers technical"><p>17. guidance publishers technical</p></div>
-	<div class="filterDiv show guidance publishers non-technical"><p>18. guidance publishers non-technical</p></div>
+	<div class="filterDiv no_show tools publishers technical"><p>15. tools publishers technical</p></div>
+	<div class="filterDiv no_show tools publishers non-technical"><p>16. tools publishers non-technical</p></div>
+	<div class="filterDiv no_show guidance publishers technical"><p>17. guidance publishers technical</p></div>
+	<div class="filterDiv no_show guidance publishers non-technical"><p>18. guidance publishers non-technical</p></div>
 
-	<div class="filterDiv show tools guidance"><p>19. tools guidance</p></div>
+	<div class="filterDiv no_show tools guidance"><p>19. tools guidance</p></div>
 
-	<div class="filterDiv show tools guidance publishers"><p>20. tools guidance publishers</p></div>
+	<div class="filterDiv no_show tools guidance publishers"><p>20. tools guidance publishers</p></div>
 
-	<div class="filterDiv show tools guidance publishers technical"><p>21. tools guidance publishers technical </p></div>
+	<div class="filterDiv no_show tools guidance publishers technical"><p>21. tools guidance publishers technical </p></div>
 
-
-
-	<script type="text/javascript" src="index.js"></script>
 	<script type="text/javascript">
-		var  tools_active = publishers_active = technical_active = guidance_active = users_active = nontechnical_active = tools_guidance_active = publishers_users_active = technical_nontechnical_active = false;
-		var no_of_classes_selected_3 = no_of_classes_selected_2 = no_of_classes_selected_1 = 0;
+		var filter_options_1 = document.getElementsByName("filter_options_1");
+		var filter_options_2 = document.getElementsByName("filter_options_2");
+		var filter_options_3 = document.getElementsByName("filter_options_3");
+
 		var current_filter_array_3 = current_filter_array_2 = current_filter_array_1 = [];
 
-		document.getElementById('tools').onclick = function(){
-			guidance_active = tools_guidance_active = false;
-			document.getElementById("guidance").classList.remove("active");  
-			document.getElementById("tools_guidance").classList.remove("active");  
+		alertx("onload");
 
-			if(!tools_active) {
-				tools_active = true;
-				document.getElementById("tools").classList.add("active"); 
+		document.getElementById('filter_options_1').onchange = function(){
+			for (i = 0; i < filter_options_1.length; i++) {
+				if (filter_options_1[i].checked) {
+					var options_selected= filter_options_1[i].value;
+				}
 			}
-			else{
-				tools_active = false;
-				document.getElementById("tools").classList.remove("active"); 
-			}; 
-			alertx("tools");
+			alertx(options_selected)
 		}
-		document.getElementById('guidance').onclick = function(){
-			tools_active =  tools_guidance_active = false;
-			document.getElementById("tools").classList.remove("active");  
-			document.getElementById("tools_guidance").classList.remove("active"); 
-			if(!guidance_active) {
-				guidance_active = true;
-				document.getElementById("guidance").classList.add("active");  
+		document.getElementById('filter_options_2').onchange = function(){
+			for (i = 0; i < filter_options_2.length; i++) {
+				if (filter_options_2[i].checked) {
+					var options_selected= filter_options_2[i].value;
+				}
 			}
-			else{
-				guidance_active = false;
-				document.getElementById("guidance").classList.remove("active");  
-
-			}; 
-			alertx("guidance");
+			alertx(options_selected)
 		}
-		document.getElementById('tools_guidance').onclick =function(){
-			tools_active = guidance_active = false;
-			document.getElementById("guidance").classList.remove("active");  
-			document.getElementById("tools").classList.remove("active"); 
-			if(!tools_guidance_active) {
-				tools_guidance_active = true; 
-				document.getElementById("tools_guidance").classList.add("active");  
-
+		document.getElementById('filter_options_3').onchange = function(){
+			for (i = 0; i < filter_options_3.length; i++) {
+				if (filter_options_3[i].checked) {
+					var options_selected= filter_options_3[i].value;
+				}
 			}
-			else{
-				tools_guidance_active = false;
-				document.getElementById("tools_guidance").classList.remove("active");  
-
-			}; 
-			alertx("tools_guidance");
-		}
-
-		document.getElementById('publishers').onclick = function(){
-			document.getElementById("users").classList.remove("active");  
-			document.getElementById("publishers_users").classList.remove("active"); 
-			users_active = publishers_users_active = false;
-			if(!publishers_active) {
-				publishers_active = true; 
-				document.getElementById("publishers").classList.add("active");
-			}
-			else{
-				publishers_active = false;
-				document.getElementById("publishers").classList.remove("active");
-
-			}; 
-			alertx("publishers");
-		}
-		document.getElementById('users').onclick = function(){
-			document.getElementById("publishers").classList.remove("active");  
-			document.getElementById("publishers_users").classList.remove("active"); 
-			publishers_active =  publishers_users_active = false;
-			if(!users_active) {
-				users_active = true;
-				document.getElementById("users").classList.add("active");
-
-			}
-			else{
-				users_active = false;
-				document.getElementById("users").classList.remove("active");
-
-			}; 
-			alertx("users");
-		}
-		document.getElementById('publishers_users').onclick = function(){
-			document.getElementById("publishers").classList.remove("active");  
-			document.getElementById("users").classList.remove("active"); 
-			publishers_active = users_active =  false;
-			if(!publishers_users_active) {
-				publishers_users_active = true;
-				document.getElementById("publishers_users").classList.add("active");
-
-			}
-			else{
-				publishers_users_active = false;
-				document.getElementById("publishers_users").classList.remove("active");
-
-			}; 
-			alertx("publishers_users");
-		}
-
-		document.getElementById('non-technical').onclick = function(){
-			document.getElementById("technical").classList.remove("active");  
-			document.getElementById("technical_non-technical").classList.remove("active"); 
-			technical_active = technical_nontechnical_active = false;
-			if(!nontechnical_active) {
-				nontechnical_active = true; 
-				document.getElementById("non-technical").classList.add("active");
-			}
-			else{
-				nontechnical_active = false;
-				document.getElementById("non-technical").classList.remove("active");
-			}; 
-			alertx("non-technical");
-		}
-		document.getElementById('technical').onclick =function(){
-			document.getElementById("non-technical").classList.remove("active");  
-			document.getElementById("technical_non-technical").classList.remove("active"); 
-			nontechnical_active = technical_nontechnical_active = false;
-			if(!technical_active) {
-				technical_active = true; 
-				document.getElementById("technical").classList.add("active");
-
-			}
-			else{
-				technical_active = false;
-				document.getElementById("technical").classList.remove("active");
-			}; 
-			alertx("technical");
-		}
-		document.getElementById('technical_non-technical').onclick = function(){
-			document.getElementById("technical").classList.remove("active");  
-			document.getElementById("non-technical").classList.remove("active"); 
-			nontechnical_active = technical_active = false;
-			if(!technical_nontechnical_active) {
-				technical_nontechnical_active = true ;
-				document.getElementById("technical_non-technical").classList.add("active");
-
-			}
-			else{
-				technical_nontechnical_active = false;
-				document.getElementById("technical_non-technical").classList.remove("active");
-			}; 
-			alertx("technical_non-technical");
+			alertx(options_selected)
 		}
 
 		function alertx(id){
@@ -225,32 +142,22 @@
 			var id_split =  id.split("_");
 			if (id_split[0] == "tools" || id_split[0] == "guidance"){
 				current_filter_array_1 = [];
-				no_of_classes_selected_1 = 0;
-				if(tools_guidance_active || tools_active || guidance_active ){
-					current_filter_array_1.push(id_split[0], id_split[1]);
-					no_of_classes_selected_1 = 1 ;
-				}
+				current_filter_array_1.push(id_split[0], id_split[1]);
 			}
 
 			else if (id_split[0] == "publishers" || id_split[0] == "users"){
 				current_filter_array_2 =[];
-				no_of_classes_selected_2 = 0;
-				if(publishers_users_active || users_active || publishers_active){
-					current_filter_array_2.push(id_split[0], id_split[1]);
-					no_of_classes_selected_2 = 1;
-				}
+				current_filter_array_2.push(id_split[0], id_split[1]);
 			}
 
 			else if (id_split[0] == "technical" || id_split[0] == "non-technical"){
 				current_filter_array_3 = [];
-				no_of_classes_selected_3 =0;
-				if(technical_nontechnical_active || technical_active || nontechnical_active){
-					current_filter_array_3.push(id_split[0], id_split[1]);
-					no_of_classes_selected_3 = 1;
-				}
-				else{
-
-				}
+				current_filter_array_3.push(id_split[0], id_split[1]);
+			}
+			else if (id_split[0] == "onload"){
+				current_filter_array_1 = ["tools","guidance"];
+				current_filter_array_2 = ["users","publishers"];
+				current_filter_array_3 = ["technical", "non-technical"];
 			}
 
 			var x = document.getElementsByClassName("filterDiv");
@@ -259,16 +166,13 @@
 			current_filter_array_2 = current_filter_array_2.filter(item => item !== undefined);
 			current_filter_array_3= current_filter_array_3.filter(item => item !== undefined);
 
-			var no_of_classes_selected = no_of_classes_selected_1 + no_of_classes_selected_2 + no_of_classes_selected_3;
-
 			for (var i = 0; i < x.length; i++) {
 				x_array = x[i].classList["value"].split(" ");
-
 				if(x_array.indexOf("no_show") !== -1) x_array.splice(x_array.indexOf("no_show"),1);
 				if(x_array.indexOf("show") !== -1) x_array.splice(x_array.indexOf("show"),1);
 				if(x_array.indexOf("filterDiv") !== -1) x_array.splice(x_array.indexOf("filterDiv"),1);
 
-				if((current_filter_array_1.length == 0 || x_array.some(r=> current_filter_array_1.indexOf(r) >= 0)) && (current_filter_array_2.length == 0 || x_array.some(r=> current_filter_array_2.indexOf(r) >= 0)) && (current_filter_array_3.length == 0 || x_array.some(r=> current_filter_array_3.indexOf(r) >= 0)) ){
+				if( x_array.some(r=> current_filter_array_1.indexOf(r) >= 0) && x_array.some(r=> current_filter_array_2.indexOf(r) >= 0) &&  x_array.some(r=> current_filter_array_3.indexOf(r) >= 0)){
 					x[i].classList.remove("no_show");
 					x[i].classList.add("show");
 				}
@@ -279,6 +183,6 @@
 			}
 
 		}
-</script>
+	</script>
 </body>
 </html>
